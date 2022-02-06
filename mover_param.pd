@@ -1,0 +1,518 @@
+#N canvas -7 0 1918 988 12;
+#X obj 464 527 value vitesse;
+#X obj 464 557 value vitesse;
+#X obj 64 567 ctlin;
+#X obj 64 591 pack;
+#X obj 594 533 r TO_CONTROL_Local;
+#X obj 594 564 list split 1;
+#X obj 634 716 qlist;
+#X obj 657 691 prepend add;
+#X obj 64 618 s midi;
+#X obj 634 623 t b a b;
+#X msg 680 658 clear;
+#X obj 634 592 list trim;
+#N canvas 0 50 862 700 XYZ 0;
+#X obj 101 101 cnv 15 118 98 empty empty empty 118 98 0 14 -258113
+-66577 0;
+#X obj 110 130 bng 15 250 50 0 empty set-X-M set-X 17 7 0 10 -204786
+-261234 -1;
+#X obj 160 129 bng 15 250 50 0 empty set-X zero-X 17 7 0 10 -99865
+-262144 -1;
+#X obj 189 276 gate;
+#X msg 153 355 \; zero-\$1-\$2 1;
+#X obj 153 336 list prepend X;
+#X msg 153 317 1 \, 2 \, 3 \, 4 \, 5;
+#X obj 121 413 list prepend X;
+#X msg 121 394 1 \, 2 \, 3 \, 4 \, 5;
+#X msg 121 432 \; set-\$1-\$2 1;
+#X obj 112 151 bng 15 250 50 0 empty set-Y-M set-Y 17 7 0 10 -204786
+-261234 -1;
+#X obj 162 150 bng 15 250 50 0 empty set-Y zero-Y 17 7 0 10 -99865
+-262144 -1;
+#X obj 379 322 gate;
+#X msg 343 401 \; zero-\$1-\$2 1;
+#X msg 343 363 1 \, 2 \, 3 \, 4 \, 5;
+#X msg 311 440 1 \, 2 \, 3 \, 4 \, 5;
+#X msg 311 478 \; set-\$1-\$2 1;
+#X obj 311 459 list prepend Y;
+#X obj 343 382 list prepend Y;
+#X obj 110 174 bng 15 250 50 0 empty set-Z-M set-Z 17 7 0 10 -204786
+-261234 -1;
+#X obj 160 173 bng 15 250 50 0 empty set-Z zero-Z 17 7 0 10 -99865
+-262144 -1;
+#X obj 601 360 gate;
+#X msg 565 439 \; zero-\$1-\$2 1;
+#X msg 565 401 1 \, 2 \, 3 \, 4 \, 5;
+#X msg 533 478 1 \, 2 \, 3 \, 4 \, 5;
+#X msg 533 516 \; set-\$1-\$2 1;
+#X obj 566 420 list prepend Z;
+#X obj 533 497 list prepend Z;
+#X obj 698 236 inlet;
+#X connect 1 0 3 1;
+#X connect 1 0 8 0;
+#X connect 2 0 6 0;
+#X connect 3 0 2 0;
+#X connect 5 0 4 0;
+#X connect 6 0 5 0;
+#X connect 7 0 9 0;
+#X connect 8 0 7 0;
+#X connect 10 0 12 1;
+#X connect 10 0 15 0;
+#X connect 11 0 14 0;
+#X connect 12 0 11 0;
+#X connect 14 0 18 0;
+#X connect 15 0 17 0;
+#X connect 17 0 16 0;
+#X connect 18 0 13 0;
+#X connect 19 0 21 1;
+#X connect 19 0 24 0;
+#X connect 20 0 23 0;
+#X connect 21 0 20 0;
+#X connect 23 0 26 0;
+#X connect 24 0 27 0;
+#X connect 26 0 22 0;
+#X connect 27 0 25 0;
+#X connect 28 0 21 0;
+#X connect 28 0 12 0;
+#X connect 28 0 3 0;
+#X coords 0 -1 1 1 120 100 1 100 100;
+#X restore 1119 120 pd XYZ;
+#X obj 1125 95 ctlin 46;
+#X msg 183 613 \; cnv-mover_param_device-shield-\$1 color 16;
+#X msg 183 590 1 \, 3 \, 5;
+#X msg 120 625 2 \, 4;
+#X msg 120 648 \; cnv-mover_param_device-shield-\$1 color 15;
+#X obj 101 101 cnv 15 798 398 empty cnv-\$0 1000_Steps 20 15 0 30 -258113
+-257985 0;
+#X obj 119 245 mover_param_device-shield 1;
+#X obj 290 245 mover_param_device-shield 2;
+#X obj 461 245 mover_param_device-shield 3;
+#X obj 140 146 mover_param_device-shield 4;
+#X obj 311 146 mover_param_device-shield 5;
+#X obj 120 566 loadbang;
+#X obj 789 305 cnv 15 100 100 empty empty empty 20 12 0 14 -260097
+-66577 0;
+#X msg 1026 601 200;
+#X obj 1095 634 send nombre_de_pas;
+#X msg 1066 601 -40000;
+#X obj 1095 500 int;
+#X obj 1157 444 t b a;
+#X obj 1157 505 pow;
+#X obj 1157 475 i 10;
+#X floatatom 1157 318 0 0 0 1 in_multiplicateur in_multiplicateur -
+;
+#X floatatom 1095 397 5 0 127 1 in-nombre_de_pas in-nombre_de_pas -
+;
+#X floatatom 799 354 7 -30000 30000 1 VALUE - -;
+#X obj 1095 462 - 64;
+#X obj 1157 366 int;
+#X floatatom 799 332 2 0 3 1 * - -;
+#X obj 1095 524 * 3;
+#X obj 1157 342 / 40;
+#X obj 1095 548 / 2;
+#X obj 1095 572 int;
+#X obj 830 605 qlist;
+#X obj 829 545 r to-QList;
+#X obj 829 569 prepend add;
+#X obj 925 512 bng 15 250 50 0 empty empty empty 17 7 0 10 -262144
+-1 -1;
+#X msg 925 532 clear;
+#X obj 766 613 print WTF;
+#X obj 926 260 prepend \$0;
+#X msg 926 284 \; cnv-\$1 label \$2_Steps;
+#X msg 969 229 0;
+#X obj 101 438 MIDI/MIDI;
+#X obj 499 438 MIDI/MIDI-MAPPER-nanokorg;
+#N canvas 0 50 450 300 stop 0;
+#X msg 390 468 /stop;
+#X obj 390 487 s to-motor;
+#X obj 100 100 bng 100 250 50 0 empty empty STOP 16 50 0 30 -260097
+-1 -262144;
+#X obj 130 46 r STOP-M;
+#X connect 0 0 1 0;
+#X connect 2 0 0 0;
+#X connect 3 0 2 0;
+#X coords 0 -1 1 1 100 100 1 100 100;
+#X restore 515 134 pd stop;
+#N canvas 31 54 969 682 SETUP 1;
+#X obj 133 498 OSC/OSCsender 127.0.0.1 5000 to-pd-motor;
+#X msg 143 479 connect 192.168.0.161 5000;
+#N canvas -8 -8 1920 997 faders 0;
+#X obj 691 547 outlet;
+#X obj 772 352 abs;
+#X obj 248 130 vsl 15 128 -200 200 0 0 empty empty X 0 -9 0 10 -262144
+-1 -1 6350 0;
+#X obj 731 351 > 0;
+#X obj 731 274 int;
+#X obj 731 298 * 10;
+#X obj 266 142 vradio 15 1 1 3 empty empty empty 0 -8 0 10 -262144
+-1 -1 2;
+#X obj 793 218 t b a;
+#X obj 793 279 pow;
+#X obj 793 249 i 10;
+#X obj 691 499 pack s f f f f f f;
+#X obj 892 352 abs;
+#X obj 302 130 vsl 15 128 -200 200 0 0 empty empty Y 0 -9 0 10 -262144
+-1 -1 6350 0;
+#X obj 851 351 > 0;
+#X obj 851 274 int;
+#X obj 851 298 * 10;
+#X obj 320 142 vradio 15 1 1 3 empty empty empty 0 -8 0 10 -262144
+-1 -1 2;
+#X obj 913 218 t b a;
+#X obj 913 279 pow;
+#X obj 913 249 i 10;
+#X obj 1062 352 abs;
+#X obj 356 130 vsl 15 128 -200 200 0 0 empty empty Z 0 -9 0 10 -262144
+-1 -1 6350 0;
+#X obj 1021 351 > 0;
+#X obj 1021 274 int;
+#X obj 1021 298 * 10;
+#X obj 374 142 vradio 15 1 1 3 empty empty empty 0 -8 0 10 -262144
+-1 -1 2;
+#X obj 1083 218 t b a;
+#X obj 1083 279 pow;
+#X obj 1083 249 i 10;
+#X obj 691 435 symbol mouvement;
+#X obj 117 301 bng 40 250 50 0 empty empty SEND 40 20 0 30 -4034 -1
+-1;
+#X msg 612 100 0;
+#X obj 731 324 t a a a;
+#X obj 851 324 t a a a;
+#X obj 1021 324 t a a a;
+#X obj 226 268 nbx 5 14 -1e+037 1e+037 0 0 empty empty empty 0 -8 0
+10 -262144 -1 -1 0 256;
+#X obj 286 268 nbx 6 14 -1e+037 1e+037 0 0 empty empty empty 0 -8 0
+10 -262144 -1 -1 0 256;
+#X obj 354 268 nbx 6 14 -1e+037 1e+037 0 0 empty empty empty 0 -8 0
+10 -262144 -1 -1 0 256;
+#X msg 834 65 200 1;
+#X obj 736 100 unpack;
+#X msg 784 65 200 0;
+#X msg 884 65 200 2;
+#X obj 612 68 loadbang;
+#X obj 736 65 inlet;
+#X obj 1110 480 symbol vitesse;
+#X floatatom 315 325 8 400 2000 1 µs - -;
+#X obj 1110 528 outlet;
+#X obj 1110 504 pack s f;
+#X msg 1256 509 vitesse 500;
+#X obj 283 310 bng 30 250 50 0 empty empty SEND-speed 30 8 0 20 -257985
+-1 -1;
+#X obj 267 211 bng 15 250 50 0 empty empty Z0 17 7 0 10 -191407 -1
+-1;
+#X msg 267 231 0;
+#X obj 321 211 bng 15 250 50 0 empty empty Z0 17 7 0 10 -191407 -1
+-1;
+#X msg 321 231 0;
+#X obj 381 211 bng 15 250 50 0 empty empty Z0 17 7 0 10 -191407 -1
+-1;
+#X msg 381 231 0;
+#X obj 118 142 vsl 15 128 -200 200 0 0 empty empty XYZ 0 -9 0 10 -191407
+-1 -1 0 1;
+#X obj 143 154 vradio 15 1 1 3 empty empty multiplicateur 0 -8 0 10
+-262144 -1 -1 2;
+#X obj 118 424 pack;
+#X obj 143 204 t b a;
+#X obj 138 256 bng 15 250 50 0 empty empty zero 17 7 0 10 -191407 -1
+-1;
+#X msg 174 60 0;
+#X connect 1 0 10 2;
+#X connect 2 0 4 0;
+#X connect 3 0 10 1;
+#X connect 4 0 5 0;
+#X connect 5 0 32 0;
+#X connect 6 0 7 0;
+#X connect 7 0 9 0;
+#X connect 7 1 8 1;
+#X connect 8 0 5 1;
+#X connect 9 0 8 0;
+#X connect 10 0 0 0;
+#X connect 11 0 10 4;
+#X connect 12 0 14 0;
+#X connect 13 0 10 3;
+#X connect 14 0 15 0;
+#X connect 15 0 33 0;
+#X connect 16 0 17 0;
+#X connect 17 0 19 0;
+#X connect 17 1 18 1;
+#X connect 18 0 15 1;
+#X connect 19 0 18 0;
+#X connect 20 0 10 6;
+#X connect 21 0 23 0;
+#X connect 22 0 10 5;
+#X connect 23 0 24 0;
+#X connect 24 0 34 0;
+#X connect 25 0 26 0;
+#X connect 26 0 28 0;
+#X connect 26 1 27 1;
+#X connect 27 0 24 1;
+#X connect 28 0 27 0;
+#X connect 29 0 10 0;
+#X connect 30 0 29 0;
+#X connect 31 0 12 0;
+#X connect 31 0 2 0;
+#X connect 31 0 21 0;
+#X connect 32 0 3 0;
+#X connect 32 2 35 0;
+#X connect 33 0 13 0;
+#X connect 33 2 36 0;
+#X connect 34 0 22 0;
+#X connect 34 2 37 0;
+#X connect 35 0 1 0;
+#X connect 36 0 11 0;
+#X connect 37 0 20 0;
+#X connect 38 0 39 0;
+#X connect 39 0 2 0;
+#X connect 39 0 12 0;
+#X connect 39 0 21 0;
+#X connect 39 1 6 0;
+#X connect 39 1 16 0;
+#X connect 39 1 25 0;
+#X connect 40 0 39 0;
+#X connect 41 0 39 0;
+#X connect 42 0 31 0;
+#X connect 43 0 39 0;
+#X connect 44 0 47 0;
+#X connect 45 0 47 1;
+#X connect 47 0 46 0;
+#X connect 48 0 46 0;
+#X connect 49 0 44 0;
+#X connect 50 0 51 0;
+#X connect 51 0 2 0;
+#X connect 52 0 53 0;
+#X connect 53 0 12 0;
+#X connect 54 0 55 0;
+#X connect 55 0 21 0;
+#X connect 56 0 58 0;
+#X connect 57 0 59 0;
+#X connect 58 0 39 0;
+#X connect 59 0 58 0;
+#X connect 59 1 58 1;
+#X connect 60 0 61 0;
+#X connect 61 0 56 0;
+#X coords 0 -1 1 1 350 250 1 100 100;
+#X restore 534 401 pd faders;
+#X msg 431 105;
+#N canvas 0 50 674 646 select_motor 0;
+#X obj 59 57 inlet;
+#X obj 105 284 outlet;
+#X obj 324 339 outlet;
+#X obj 105 133 hradio 15 1 0 5 empty empty empty 0 -8 0 10 -262144
+-1 -1 0;
+#X obj 220 167 + 1;
+#X obj 105 217 prepend /SHIELD-1;
+#X msg 220 189 set /SHIELD-\$1;
+#X msg 279 241 set;
+#X obj 329 248 prepend add2;
+#X obj 446 236 prepend addcomma;
+#X obj 155 241 t a b;
+#X connect 0 0 5 0;
+#X connect 3 0 4 0;
+#X connect 4 0 6 0;
+#X connect 5 0 1 0;
+#X connect 5 0 10 0;
+#X connect 6 0 5 0;
+#X connect 7 0 2 0;
+#X connect 8 0 2 0;
+#X connect 9 0 2 0;
+#X connect 10 0 8 0;
+#X connect 10 1 9 0;
+#X coords 0 -1 1 1 85 60 1 100 100;
+#X restore 534 662 pd select_motor;
+#X msg 426 43 set;
+#X obj 426 25 bng 15 250 50 1 empty empty raz 17 7 0 10 -1 -262144
+-1;
+#X msg 63 599 /SHIELD-2 mouvement 1 27000 1 27000 1 27000;
+#X msg 63 618 /SHIELD-1 mouvement 1 27000 1 27000 1 27000;
+#X msg 236 305 1000;
+#X msg 276 305 1500;
+#X msg 63 551 /SHIELD-2 mouvement 1 7000 1 7000 0 7000;
+#X msg 63 570 /SHIELD-2 mouvement 0 7000 0 7000 1 7000;
+#X obj 5 479 r to-motor;
+#X msg 627 287 /SHIELD-5 mouvement 1 200 1 200 0 200 \; /SHIELD-4 mouvement
+1 200 1 200 0 200 \; /SHIELD-3 mouvement 1 200 1 200 0 200 \; /SHIELD-2
+mouvement 1 200 1 200 0 200 \; /SHIELD-1 mouvement 1 200 1 200 0 200
+\;;
+#X msg 494 165 /SHIELD-1 vitesse 500 \; /SHIELD-2 vitesse 500 \; /SHIELD-3
+vitesse 500 \; /SHIELD-4 vitesse 500 \; /SHIELD-5 vitesse 500 \;;
+#X obj 581 53 loadbang;
+#X obj 560 86 qlist;
+#X obj 553 56 bng 15 250 50 0 empty empty empty 17 7 0 10 -159808 -4032
+-1;
+#X obj 104 109 bng 20 250 50 0 empty empty connect-OSC 20 7 0 10 -262144
+-1 -1;
+#X obj 104 154 bng 20 250 50 0 empty empty speed_500 20 7 0 10 -262144
+-1 -1;
+#X obj 104 194 bng 20 250 50 0 empty empty speed_1000 20 7 0 10 -262144
+-1 -1;
+#X msg 206 305 500;
+#X obj 104 129 bng 20 250 50 0 empty empty connect-MIDI 20 7 0 10 -262144
+-1 -1;
+#X msg 229 140 \; MIDI_CONNECT- 24 128;
+#X obj 104 174 bng 20 250 50 0 empty empty speed_800 20 7 0 10 -262144
+-1 -1;
+#X obj 104 214 bng 20 250 50 0 empty empty speed_1500 20 7 0 10 -262144
+-1 -1;
+#X msg 326 305 800;
+#X msg 143 460 connect 192.168.10.105 5000;
+#X msg 376 306 3000;
+#X obj 125 231 bng 20 250 50 0 empty empty speed_3000 20 7 0 10 -262144
+-1 -1;
+#X msg 209 343 /SHIELD-1 vitesse \$1 \, /SHIELD-2 vitesse \$1 \, /SHIELD-3
+vitesse \$1 \, /SHIELD-4 vitesse \$1 \, /SHIELD-5 vitesse \$1;
+#X msg 160 418 connect 192.168.137.133 5000;
+#X msg 192 442 connect 192.168.10.100 5000;
+#X connect 1 0 0 1;
+#X connect 2 0 4 0;
+#X connect 2 1 4 0;
+#X connect 4 0 0 0;
+#X connect 4 1 3 0;
+#X connect 5 0 3 0;
+#X connect 6 0 5 0;
+#X connect 7 0 0 0;
+#X connect 9 0 31 0;
+#X connect 10 0 31 0;
+#X connect 11 0 0 0;
+#X connect 12 0 0 0;
+#X connect 13 0 0 0;
+#X connect 15 0 0 0;
+#X connect 16 0 17 0;
+#X connect 18 0 17 0;
+#X connect 19 0 28 0;
+#X connect 20 0 22 0;
+#X connect 21 0 9 0;
+#X connect 22 0 31 0;
+#X connect 23 0 24 0;
+#X connect 25 0 27 0;
+#X connect 26 0 10 0;
+#X connect 27 0 31 0;
+#X connect 28 0 0 1;
+#X connect 29 0 31 0;
+#X connect 30 0 29 0;
+#X connect 31 0 0 0;
+#X connect 32 0 0 1;
+#X coords 0 -1 1 1 100 150 2 100 100;
+#X restore 794 123 pd SETUP;
+#N canvas 0 50 1183 680 shortcut 0;
+#X obj 102 103 bng 20 250 50 0 empty empty UP_25000 20 7 0 10 -262144
+-1 -1;
+#X obj 102 123 bng 20 250 50 0 empty empty DOWN_25000 20 7 0 10 -262144
+-1 -1;
+#X obj 85 247 s to-motor;
+#X msg 635 127 /SHIELD-1 mouvement 1 25000 1 25000 1 25000 \, /SHIELD-2
+mouvement 1 25000 1 25000 1 25000 \, /SHIELD-3 mouvement 1 25000 1
+25000 1 25000, f 44;
+#X msg 266 135 /SHIELD-1 mouvement 0 25000 0 25000 0 25000 \, /SHIELD-2
+mouvement 0 25000 0 25000 0 25000 \, /SHIELD-3 mouvement 0 25000 0
+25000 0 25000, f 44;
+#X obj 102 163 bng 20 250 50 0 empty empty DOWN_10000 20 7 0 10 -262144
+-1 -1;
+#X msg 256 196 /SHIELD-1 mouvement 0 10000 0 10000 0 10000 \, /SHIELD-2
+mouvement 0 10000 0 10000 0 10000 \, /SHIELD-3 mouvement 0 10000 0
+10000 0 10000, f 44;
+#X obj 102 143 bng 20 250 50 0 empty empty UP_10000 20 7 0 10 -262144
+-1 -1;
+#X msg 715 54 /SHIELD-1 mouvement 1 10000 1 10000 1 10000 \, /SHIELD-2
+mouvement 1 10000 1 10000 1 10000 \, /SHIELD-3 mouvement 1 10000 1
+10000 1 10000, f 44;
+#X msg 709 290 /SHIELD-1 mouvement 1 6000 1 6000 0 0 \, /SHIELD-2 mouvement
+1 6000 1 6000 0 0 \, /SHIELD-3 mouvement 1 6000 1 6000 0 0, f 40;
+#X msg 706 359 /SHIELD-1 mouvement 0 6000 0 6000 0 0 \, /SHIELD-2 mouvement
+0 6000 0 6000 0 0 \, /SHIELD-3 mouvement 0 6000 0 6000 0 0, f 40;
+#X msg 708 444 /SHIELD-1 mouvement 0 6000 0 6000 1 6000 \, /SHIELD-2
+mouvement 0 6000 0 6000 1 6000 \, /SHIELD-3 mouvement 0 6000 0 6000
+1 6000, f 44;
+#X msg 708 510 /SHIELD-1 mouvement 1 6000 1 6000 0 6000 \, /SHIELD-2
+mouvement 1 6000 1 6000 0 6000 \, /SHIELD-3 mouvement 1 6000 1 6000
+0 6000, f 44;
+#X connect 0 0 3 0;
+#X connect 1 0 4 0;
+#X connect 3 0 2 0;
+#X connect 4 0 2 0;
+#X connect 5 0 6 0;
+#X connect 6 0 2 0;
+#X connect 7 0 8 0;
+#X connect 8 0 2 0;
+#X connect 9 0 2 0;
+#X connect 10 0 2 0;
+#X connect 11 0 2 0;
+#X connect 12 0 2 0;
+#X coords 0 -1 1 1 85 300 2 100 100;
+#X restore 674 123 pd shortcut;
+#X msg 1323 85 \; X-2 0 \; Y-2 0 \; Z-2 -3000 \;;
+#X msg 1321 223 \; X-1 4000 \; Y-1 4000 \; Z-1 4000 \;;
+#X msg 1409 76 \; X-2 -6000 \; Y-2 -6000 \; Z-2 -7000 \;;
+#X msg 1561 42 \; X-1 6000 \; Y-1 4000 \; Z-1 7000 \; X-2 6000 \; Y-2
+6000 \; Z-2 10000 \; X-3 4000 \; Y-3 6000 \; Z-3 7000 \; X-4 0 \; Y-4
+0 \; Z-4 0 \; Z-5 0 \; Y-5 0 \; X-5 0 \;;
+#X msg 1661 42 \; X-1 -6000 \; Y-1 -4000 \; Z-1 -7000 \; X-2 -6000
+\; Y-2 -6000 \; Z-2 -10000 \; X-3 -4000 \; Y-3 -6000 \; Z-3 -7000 \;
+X-4 0 \; Y-4 0 \; Z-4 0 \; Z-5 0 \; Y-5 0 \; X-5 0 \;;
+#X msg 1433 235 \; X-1 4000 \; Y-1 4000 \; Z-1 4000 \;;
+#X msg 1360 365 \; X-1 20000 \; Y-1 20000 \; Z-1 20000 \; X-2 20000
+\; Y-2 20000 \; Z-2 20000 \; X-3 20000 \; Y-3 20000 \; Z-3 20000 \;
+X-4 20000 \; Y-4 20000 \; Z-4 20000 \; X-5 0 \; Y-5 0 \; Z-5 0 \;;
+#X msg 1448 366 \; X-1 0 \; Y-1 0 \; Z-1 0 \; X-2 0 \; Y-2 0 \; Z-2
+-3000 \; X-3 0 \; Y-3 0 \; Z-3 0 \; X-4 0 \; Y-4 0 \; Z-4 0 \; X-5
+0 \; Y-5 0 \; Z-5 0 \;;
+#X msg 1540 366 \; X-1 0 \; Y-1 0 \; Z-1 0 \; X-2 -6000 \; Y-2 -6000
+\; Z-2 -7000 \; X-3 0 \; Y-3 0 \; Z-3 0 \; X-4 0 \; Y-4 0 \; Z-4 0
+\; X-5 0 \; Y-5 0 \; Z-5 0 \;;
+#X msg 1629 366 \; X-1 -6000 \; Y-1 -4000 \; Z-1 -7000 \; X-2 0 \;
+Y-2 0 \; Z-2 0 \; X-3 0 \; Y-3 0 \; Z-3 0 \; X-4 0 \; Y-4 0 \; Z-4
+0 \; X-5 0 \; Y-5 0 \; Z-5 0 \;;
+#X msg 1720 366 \; X-1 0 \; Y-1 0 \; Z-1 0 \; X-2 0 \; Y-2 0 \; Z-2
+0 \; X-3 -4000 \; Y-3 -6000 \; Z-3 -7000 \; X-4 0 \; Y-4 0 \; Z-4 0
+\; X-5 0 \; Y-5 0 \; Z-5 0 \;;
+#X msg 1358 646 \; X-1 6000 \; Y-1 4000 \; Z-1 7000 \; X-2 0 \; Y-2
+0 \; Z-2 0 \; X-3 0 \; Y-3 0 \; Z-3 0 \; X-4 0 \; Y-4 0 \; Z-4 0 \;
+X-5 0 \; Y-5 0 \; Z-5 0 \;;
+#X msg 1450 646 \; X-1 0 \; Y-1 0 \; Z-1 0 \; X-2 0 \; Y-2 0 \; Z-2
+0 \; X-3 4000 \; Y-3 6000 \; Z-3 7000 \; X-4 0 \; Y-4 0 \; Z-4 0 \;
+X-5 0 \; Y-5 0 \; Z-5 0 \;;
+#X msg 1540 646 \; X-1 0 \; Y-1 0 \; Z-1 0 \; X-2 6000 \; Y-2 6000
+\; Z-2 10000 \; X-3 0 \; Y-3 0 \; Z-3 0 \; X-4 0 \; Y-4 0 \; Z-4 0
+\; X-5 0 \; Y-5 0 \; Z-5 0 \;;
+#X connect 2 0 3 0;
+#X connect 2 1 3 1;
+#X connect 3 0 8 0;
+#X connect 4 0 5 0;
+#X connect 5 1 11 0;
+#X connect 7 0 6 0;
+#X connect 9 0 6 0;
+#X connect 9 1 7 0;
+#X connect 9 2 10 0;
+#X connect 10 0 6 0;
+#X connect 11 0 9 0;
+#X connect 13 0 12 0;
+#X connect 15 0 14 0;
+#X connect 16 0 17 0;
+#X connect 24 0 15 0;
+#X connect 24 0 16 0;
+#X connect 26 0 27 0;
+#X connect 28 0 27 0;
+#X connect 29 0 39 0;
+#X connect 30 0 32 0;
+#X connect 30 1 31 1;
+#X connect 31 0 39 1;
+#X connect 32 0 31 0;
+#X connect 33 0 40 0;
+#X connect 34 0 36 0;
+#X connect 35 0 27 0;
+#X connect 35 0 49 0;
+#X connect 36 0 29 0;
+#X connect 37 0 38 0;
+#X connect 38 0 30 0;
+#X connect 39 0 41 0;
+#X connect 40 0 37 0;
+#X connect 41 0 42 0;
+#X connect 42 0 35 0;
+#X connect 44 0 45 0;
+#X connect 44 0 48 0;
+#X connect 45 0 43 0;
+#X connect 46 0 47 0;
+#X connect 47 0 43 0;
+#X connect 49 0 50 0;
+#X connect 51 0 49 0;
+#X coords 0 -1 1 1 800 400 2 100 100;

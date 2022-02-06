@@ -1,0 +1,39 @@
+#N canvas 0 50 450 372 12;
+#X obj 132 232 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 178 101 bng 17 250 50 0 empty set-\$1-\$2 set 19 7 0 10 -204786
+-261234 -1;
+#X obj 132 67 value nombre_de_pas;
+#X floatatom 125 101 7 0 0 0 #1-#2 - -;
+#X obj 215 100 bng 17 250 50 0 empty zero-\$1-\$2 zero 19 7 0 10 -99865
+-262144 -1;
+#X msg 269 67 0;
+#X obj 173 207 abs;
+#X obj 132 206 > 0;
+#X obj 132 149 int;
+#X obj 132 179 t a a;
+#X obj 134 266 outlet;
+#X obj 208 261 outlet;
+#X obj 286 126 ctlin 46;
+#X obj 253 178 gate;
+#X obj 91 33 r \$1-\$2;
+#X obj 306 325 s to-QList;
+#X obj 306 265 prepend \$1-\$2;
+#X connect 0 0 10 0;
+#X connect 1 0 2 0;
+#X connect 1 0 13 1;
+#X connect 2 0 3 0;
+#X connect 3 0 8 0;
+#X connect 4 0 5 0;
+#X connect 5 0 3 0;
+#X connect 6 0 11 0;
+#X connect 7 0 0 0;
+#X connect 8 0 9 0;
+#X connect 8 0 16 0;
+#X connect 9 0 7 0;
+#X connect 9 1 6 0;
+#X connect 12 0 13 0;
+#X connect 13 0 4 0;
+#X connect 14 0 3 0;
+#X connect 16 0 15 0;
+#X coords 0 -1 1 1 158 20 2 100 100;
